@@ -12,6 +12,7 @@ categories: algorithm
 
 For the linked list question, there is a very useful technique which might make your code pretty easy: **_using the dummy head_**. Sometimes you need to write code to deal with different cases for different head. Under this circumstance, you can add a new dummy head before, and put the logical business into a while loop.
 
+{% highlight java %}
 	public ListNode swapPairs(ListNode head) {
         // IMPORTANT: Please reset any member data you declared, as
         // the same Solution instance will be reused for each test case.
@@ -37,6 +38,7 @@ For the linked list question, there is a very useful technique which might make 
         }
         return dump.next;
     }
+{% endhighlight %}
     
 This is my first version. It still a little more complicated. I simply think of using prev, cur, next and next to the next variable to swap the node (swap cur and next node). Then I skip one node, assign prev with prev.next.next. This step is not necessary. cur node now is alreay the next next to prev, simply assign cur.next to prev is OK. I found the following version online, the same idea, but more concise than my first version.
 
