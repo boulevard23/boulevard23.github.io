@@ -6,11 +6,8 @@ categories: algorithm
 ---
 
 > Question:
-
 > Given a linked list, swap every two adjacent nodes and return its head.
-
 > For example, Given `1 -> 2 -> 3 -> 4`, you should return the list as `2 -> 1 -> 4 -> 3`.
-
 > Your algorithm should use only constant space. You may not modify the values in the list, only nodes itself can be changed.
 
 For the linked list question, there is a very useful technique which might make your code pretty easy: **_using the dummy head_**. Sometimes you need to write code to deal with different cases for different head. Under this circumstance, you can add a new dummy head before, and put the logical business into a while loop.
