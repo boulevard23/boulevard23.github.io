@@ -5,7 +5,7 @@ date:   2013-11-05 20:53:20
 categories: algorithm
 ---
 
-Find the longest increasing subsequence. For example, input: `5, 2, 8, 6, 3, 6, 9, 2`, output: `2, 3, 6, 9`
+> Question: Find the longest increasing subsequence. For example, input: `5, 2, 8, 6, 3, 6, 9, 2`, output: `2, 3, 6, 9`
 
 This is actually a classic Dynamic Programming. From the **_start_** to the **_end_**, the longest increasing subsequence is the longest subsequence from the **_start_** to the **_previous to end_** + 1.
 

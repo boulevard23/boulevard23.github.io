@@ -7,7 +7,7 @@ categories: algorithm
 
 ## Merge Sorted List
 
-Assume that 2 lists are already sorted. Merge them into one list.
+> Question: Assume that 2 lists are already sorted. Merge them into one list.
 
 
 	public ArrayList<Integer> mergeList(ArrayList<Integer> a, ArrayList<Integer> b) {
