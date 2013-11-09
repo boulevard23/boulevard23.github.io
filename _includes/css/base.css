@@ -332,4 +332,9 @@
 	.half-bottom { margin-bottom: 10px !important; }
 	.add-bottom { margin-bottom: 20px !important; }
 
+/* #Site Name - me
+================================================== */
 
+  a.site-name:hover {
+    text-decoration: none;
+  }
