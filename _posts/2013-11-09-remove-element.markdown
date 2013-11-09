@@ -13,12 +13,15 @@ This problem is not difficult at all, but very interesting actually. The key poi
 
 Solution:
 
-	public int removeElement(int[] A, int elem) {
-        // IMPORTANT: Please reset any member data you declared, as
-        // the same Solution instance will be reused for each test case.
-        int notElemPos = A.length - 1;
-        for (int i = A.length - 1; i >= 0; i--) {
-            if (A[i] == elem) A[i] = A[notElemPos--];
-        }
-        return notElemPos + 1;
+{% highlight java %}
+
+public int removeElement(int[] A, int elem) {
+    // IMPORTANT: Please reset any member data you declared, as
+    // the same Solution instance will be reused for each test case.
+    int notElemPos = A.length - 1;
+    for (int i = A.length - 1; i >= 0; i--) {
+       if (A[i] == elem) A[i] = A[notElemPos--];
     }
+    return notElemPos + 1;
+}
+{% endhighlight %}

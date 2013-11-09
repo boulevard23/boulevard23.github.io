@@ -42,7 +42,7 @@ Now, how to use 3 basic operation to keep this invariant. Sedgewick said: **we c
 
 The following image illustrate how to use rotation and flip color to keep the invariant.
 
-![moveRedLeft]({{site.url}}/img/moveRedLeft.png)
+![moveRedLeft](/assets/img/moveRedLeft.png)
 
 And since the whole procedure may introduce successive reds on the right. That is why we need `fixUp()` when finish the deletion.
 

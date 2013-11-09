@@ -29,49 +29,55 @@ Now comes the most difficult part: Javascript. Bootstrap has already provide a b
 
 The following code is the front-end AJAX:
 
-	$.ajax({
-      type: "POST",
-      dataType: "json",
-      data: {
-        username : username_str,
-        password : password_str,
-      },
-      success: function(response) {
-        if (response.message == "nonexist") {
-          $('#alert').removeClass().addClass('alert alert-error').text('User doesn\'t exist!');
-          $('input[type=text]').val('');
-          $('input[type=password]').val('');
-        } else if (response.message == "nomatch") {
-          $('#alert').removeClass().addClass('alert alert-error').text('Wrong password!')
-          $('input[type=password]').val('');
-        } else if (response.message == "nopermission") {
-          $('#alert').removeClass().addClass('alert alert-error').text('You are not an admin')
-        } else {
-          $(location).attr('href', '/admin');
-        }
-      },
-    });
+{% highlight javascript %}
+
+$.ajax({
+  type: "POST",
+  dataType: "json",
+  data: {
+    username : username_str,
+    password : password_str,
+  },
+  success: function(response) {
+    if (response.message == "nonexist") {
+      $('#alert').removeClass().addClass('alert alert-error').text('User doesn\'t exist!');
+      $('input[type=text]').val('');
+      $('input[type=password]').val('');
+    } else if (response.message == "nomatch") {
+      $('#alert').removeClass().addClass('alert alert-error').text('Wrong password!')
+      $('input[type=password]').val('');
+    } else if (response.message == "nopermission") {
+      $('#alert').removeClass().addClass('alert alert-error').text('You are not an admin')
+    } else {
+      $(location).attr('href', '/admin');
+    }
+  },
+});
+    
+{% endhighlight %}
 
 This is the back-end code:
 
-	def POST(self):
-      post = web.input(_method='POST')
+{% highlight python %}
 
-      user = users.get_user_by_name(post['username'])
-      if user is None:
-        response = {'message': 'nonexist'}
-      elif user['password'] != post['password']:
-        response = {'message': 'nomatch'}
-      elif user['authority'] == 1:
-        response = {'message': 'nopermission'}
-      else:
-        users.login(user)
-        response = {'message': 'success'}
-        logs.login(post['username'])
+def POST(self):
+  post = web.input(_method='POST')
 
-      return json.dumps(response)
+  user = users.get_user_by_name(post['username'])
+  if user is None:
+    response = {'message': 'nonexist'}
+  elif user['password'] != post['password']:
+    response = {'message': 'nomatch'}
+  elif user['authority'] == 1:
+    response = {'message': 'nopermission'}
+  else:
+    users.login(user)
+    response = {'message': 'success'}
+    logs.login(post['username'])
 
+  return json.dumps(response)
 
+{% endhighlight %}
 
 ### Server Sent Event
 
@@ -80,22 +86,26 @@ The website is almost done so far, until I show the site to the team leader… H
 
 This is my code:
 
-	# Default status is close
-	door_status = 0
+{% highlight python %}
 
-	class Sse:
-  	  def GET(self):
-        web.header('content-type', 'text/event-stream')
-        web.header('Cache-Control', 'no-cache')
-        while True:
-          if door_status == 1:
-            yield 'data: %s\n\n' % (json.dumps({'door': 'open'}))
-            door_status == 0
-          time.sleep(1)
+# Default status is close
+door_status = 0
+
+class Sse:
+  def GET(self):
+    web.header('content-type', 'text/event-stream')
+	web.header('Cache-Control', 'no-cache')
+	while True:
+	  if door_status == 1:
+	    yield 'data: %s\n\n' % (json.dumps({'door': 'open'}))
+    	door_status == 0
+	  time.sleep(1)
+
+{% endhighlight %}
 
 The website is still under construction, so I just put a screenshot here. After it is done, I will open source it in GitHub.
 
-![index_page]({{site.url}}/img/audio_recorder.png)
+![index_page](/assets/img/audio_recorder.png)
 
 
 [mongo_session]:https://github.com/whilefalse/webpy-mongodb-sessions
