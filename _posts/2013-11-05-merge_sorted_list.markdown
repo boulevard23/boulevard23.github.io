@@ -5,8 +5,6 @@ date:   2013-11-05 20:48:20
 categories: algorithm
 ---
 
-## Merge Sorted List
-
 > Question: Assume that 2 lists are already sorted. Merge them into one list.
 
 {% highlight java %}

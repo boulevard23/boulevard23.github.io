@@ -5,8 +5,6 @@ date:   2013-11-11 17:58:20
 categories: algorithm
 ---
 
-## Binary Tree Traversal - Non Recursive
-
 > Question: Implement the algorithms to traverse a binary tree in pre-order, in-order, post-order without using recursion.
 
 It is pretty easy to write the recursive version. To write the non-recursive version, you need to use stack. 
